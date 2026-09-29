@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}<div class="form-page paper"><span class="eyebrow">NEW DISCOVERY</span><h1>Add your weird find</h1><form method="post" enctype="multipart/form-data">
+<label>Photo<input type="file" name="image" accept="image/*" required></label>
+<label>Caption<input name="caption" maxlength="120" placeholder="What did you find?" required></label>
+<label>Description<textarea name="description" rows="5" placeholder="Tell the story..."></textarea></label>
+<button class="button">SUBMIT FOR REVIEW</button></form><p class="muted">Your find starts as pending. A host decides its rarity before points are awarded.</p></div>{% endblock %}

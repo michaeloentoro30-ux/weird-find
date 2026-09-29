@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}{{rarities[rarity].label}} · The Weird Durex Finds{% endblock %}{% block content %}
+<div class="book">
+<div class="book-head"><div><span class="eyebrow">CHAPTER</span><h1>{{rarities[rarity].label}}</h1></div><div class="points-badge">{{rarities[rarity].points}} POINTS</div></div>
+<div class="tabs">{% for key,r in rarities.items() %}<a class="{{'active' if key==rarity}}" href="{{url_for('book',rarity=key)}}">{{r.label}}</a>{% endfor %}</div>
+<div class="page-label">PAGE {{page}} / {{maxpage}}</div>
+<div class="photo-grid">{% for f in finds %}<a class="photo-card {{f['attachment']}}" href="{{url_for('find_detail',find_id=f['id'])}}" style="--r:{{[-3,-2,0,2,3][loop.index0%5]}}deg"><img src="{{url_for('static',filename=f['image_path'])}}"><b>{{f['caption']}}</b><small>by {{f['username']}}</small></a>{% else %}<div class="empty">Nothing here yet. This page is waiting for something weird.</div>{% endfor %}</div>
+<div class="pager">{% if page>1 %}<a class="button small" href="?page={{page-1}}">← Previous</a>{% endif %}<span>PAGE {{page}}</span>{% if page<maxpage %}<a class="button small" href="?page={{page+1}}">Next →</a>{% endif %}</div>
+</div>{% endblock %}

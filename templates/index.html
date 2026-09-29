@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block content %}
+<section class="hero">
+<div><div class="eyebrow">WELCOME TO THE COLLECTION</div><h1>The Weird<br><span>Durex Finds</span></h1>
+<p>A digital scrapbook for strange, funny, rare and completely unnecessary discoveries.</p>
+<div class="actions"><a class="button" href="{{ url_for('register') }}">START COLLECTING</a><a class="textlink" href="{{ url_for('book',rarity='common') }}">Explore the book →</a></div></div>
+<div class="hero-note">NO FIND<br>TOO WEIRD<br>TOO SMALL</div>
+</section>
+<section class="book-preview"><div class="chapter">RECENTLY DISCOVERED</div><div class="photo-grid">
+{% for f in featured %}<a class="photo-card {{f['attachment']}}" href="{{url_for('find_detail',find_id=f['id'])}}" style="--r:{{[-3,-2,0,2,3][loop.index0%5]}}deg"><img src="{{url_for('static',filename=f['image_path'])}}"><b>{{f['caption']}}</b><small>{{f['rarity']|upper}} · by {{f['username']}}</small></a>{% else %}<div class="empty">The book is waiting for its first weird find.</div>{% endfor %}</div></section>
+{% endblock %}
